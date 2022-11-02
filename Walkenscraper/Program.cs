@@ -91,6 +91,7 @@ try
                 //get current level
                 var lvl = DocToParse.DocumentNode.SelectSingleNode("//span[@class=\"CathleteLevel__Level-sc-v64rqk-3 hWlTYV\"]");
 
+
                 //get current breedcount and gems
                 i = 0;
                 string[] breed = { "", "" };
@@ -155,6 +156,7 @@ try
                     i++;
 
                 }
+                
 
                 //add to data
                 data.Add(wlknc.attributes[0].value.ToString() + ";" + lvl.InnerText.Remove(0, 5) + ";" + wlknc.attributes[1].value.ToString() + ";" + breed[0] + ";" + breed[1] + ";" + gems[0] + ";" + gems[1] + ";" +
@@ -163,9 +165,12 @@ try
                 color_rar + ";" + color_p.Replace('.', seperator[0]) + ";" + enviroment_rar + ";" + enviroment_p.Replace('.', seperator[0]) + ";" + body_rar + ";" + body_p.Replace('.', seperator[0]) + ";" + tail_rar + ";" + tail_p.Replace('.', seperator[0]) + ";" + ears_rar + ";" + ears_p.Replace('.', seperator[0]) + ";" + face_rar + ";" + face_p.Replace('.', seperator[0]) + ";" +
                 wlknc.image + ";" + wlknc.external_url);
 
+
                 //dont ask to many cathletes so wait for 6s
-                Console.WriteLine("Wait 6s for next");
-                Thread.Sleep(6000);
+                Console.WriteLine("Wait 10s for next");
+                Thread.Sleep(10000);
+                //wlknc.attributes[1].value.ToString() rarity
+                //lvl.InnerText.Remove(0, 5) level
 
 
             }
@@ -183,7 +188,7 @@ try
 
     }
     //write to file
-    System.IO.File.WriteAllLines(@"CATthletes.csv", data);
+    System.IO.File.WriteAllLines(@"CATthletes-"+publicKey+ ".csv", data);
     Console.WriteLine();
     Console.WriteLine("finished");
     Console.ReadKey();
